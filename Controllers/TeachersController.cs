@@ -114,6 +114,26 @@ namespace WebApiProjectEFDb.Controllers
 
             return Ok();
         }
+        //Patch: api/Teachers/
+         [HttpPatch("{id}")]
+        public async Task<IActionResult> PatchTeacher(int Id, TeachersAndClassRoomAPIModel teachersAndClassRoomAPIModel)
+        {
+            if (_context.Teacher == null)
+            {
+                return NoContent();
+            }
+            var teacher = await _context.Teacher.FindAsync(Id);
+            if (teacher == null)
+            {
+                return NotFound();
+            }
+            //teacher.Name = teachersAndClassRoomAPIModel.Teacher.Name;
+            teacher.Address = teachersAndClassRoomAPIModel.Teacher.Address;
+            teacher.EmailId = teachersAndClassRoomAPIModel.Teacher.EmailId;
+            _context.Teacher.Update(teacher);
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
 
         // DELETE: api/Teachers/5
         [HttpDelete("{id}")]

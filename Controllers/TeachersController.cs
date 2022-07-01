@@ -56,7 +56,7 @@ namespace WebApiProjectEFDb.Controllers
 
         // PUT: api/Teachers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut("{Id}")]
         public async Task<IActionResult> PutTeachers(int Id, TeachersAndClassRoomAPIModel teachersAndClassRoomAPIModel)
         {
             
@@ -115,7 +115,7 @@ namespace WebApiProjectEFDb.Controllers
             return Ok();
         }
         //Patch: api/Teachers/
-         [HttpPatch("{id}")]
+         [HttpPatch("{Id}")]
         public async Task<IActionResult> PatchTeacher(int Id, TeachersAndClassRoomAPIModel teachersAndClassRoomAPIModel)
         {
             if (_context.Teacher == null)
